@@ -1,7 +1,9 @@
+import styled from "styled-components";
+import React, {useState} from 'react';
 import logo from './logo.svg';
 import './App.css';
 import BookLists from "./components/BookLists";
-import styled from "styled-components";
+import SearchBook from "./components/SeachBook";
 
 const Main = styled.div`
   display: flex;
@@ -10,9 +12,14 @@ const Main = styled.div`
 `;
 
 function App() {
+   const [searchTarget, setSearchTarget] = useState('');
+   const clickSearchBtn = (target) => {
+       setSearchTarget(target);
+   }
   return (
     <Main className="App">
-      <BookLists/>
+        <SearchBook searchTarget={searchTarget} search={clickSearchBtn}/>
+        <BookLists/>
     </Main>
   );
 }

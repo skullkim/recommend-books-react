@@ -60,7 +60,7 @@ const BookLists = () => {
     return (
         <div>
             {books.map(({authors, contents, thumbnail, title, url}) => (
-                <BooksInformation>
+                <BooksInformation key={url}>
                     <BookInfo>
                         <p><BookLink href={url}>제목: {title},</BookLink></p>
                         <p>저자: {authors}</p>
