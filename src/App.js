@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import React, {useState} from 'react';
+import React, {useState, useCallback} from 'react';
 import logo from './logo.svg';
 import './App.css';
 import BookLists from "./components/BookLists";
@@ -13,13 +13,15 @@ const Main = styled.div`
 
 function App() {
    const [searchTarget, setSearchTarget] = useState('');
-   const clickSearchBtn = (target) => {
+   const clickSearchBtn = useCallback((target) => {
+       console.log(1111);
        setSearchTarget(target);
-   }
+   }, [searchTarget]);
+
   return (
     <Main className="App">
         <SearchBook searchTarget={searchTarget} search={clickSearchBtn}/>
-        <BookLists/>
+        <BookLists searchTarget={searchTarget}/>
     </Main>
   );
 }

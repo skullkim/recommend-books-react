@@ -23,7 +23,7 @@ const BookLink = styled('a')`
   color: black;
 `;
 
-const BookLists = () => {
+const BookLists = ({searchTarget}) => {
     const [books, setBooks] = useState(null);
     const [loading, setLoading] = useState(false);
     useEffect(() => {
@@ -35,7 +35,7 @@ const BookLists = () => {
                     url: 'https://dapi.kakao.com/v3/search/book?target=title',
                     headers: {Authorization: `KakaoAK ${process.env.REACT_APP_KAKAO_KEY}`},
                     params: {
-                        query: '프로그래밍',
+                        query: `${searchTarget || '책'}`,
                     }
                 });
                 setBooks(documents);
@@ -46,17 +46,19 @@ const BookLists = () => {
             }
         }
         booksData();
-    }, []);
+    }, [searchTarget]);
 
     if(loading) {
-        return(<div>Loading...</div>);
+        return (<div>Loading...</div>);
     }
 
     if(!books) {
         return null;
     }
-
-     console.log(books);
+    else if (Array.isArray(books) && books.length === 0){
+        return (<div>No search result</div>);
+    }
+    console.log(books);
     return (
         <div>
             {books.map(({authors, contents, thumbnail, title, url}) => (
