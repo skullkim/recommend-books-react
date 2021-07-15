@@ -23,7 +23,7 @@ const BookLink = styled('a')`
   color: black;
 `;
 
-const BookLists = ({searchTarget}) => {
+const BookLists = ({searchTarget, category}) => {
     const [books, setBooks] = useState(null);
     const [loading, setLoading] = useState(false);
     useEffect(() => {
@@ -35,7 +35,7 @@ const BookLists = ({searchTarget}) => {
                     url: 'https://dapi.kakao.com/v3/search/book?target=title',
                     headers: {Authorization: `KakaoAK ${process.env.REACT_APP_KAKAO_KEY}`},
                     params: {
-                        query: `${searchTarget || '책'}`,
+                        query: `${searchTarget || category}`,
                     }
                 });
                 setBooks(documents);
@@ -46,7 +46,7 @@ const BookLists = ({searchTarget}) => {
             }
         }
         booksData();
-    }, [searchTarget]);
+    }, [searchTarget, category]);
 
     if(loading) {
         return (<div>Loading...</div>);
