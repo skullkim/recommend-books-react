@@ -31,9 +31,15 @@ const SearchBook = ({search}) => {
         setTarget(e.target.value);
     }, [target]);
 
+    const pressEnter = (e) => {
+        if(e.key === 'Enter') {
+            search(target);
+        }
+    }
+
     return(
         <SearchBox>
-            <InputTarget type="text" onChange={inputTarget}/>
+            <InputTarget type="text" onChange={inputTarget} onKeyPress={pressEnter}/>
             <SearchButton
                 onClick={() => search(target)}
                 to={`/${target}`}
