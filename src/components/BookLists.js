@@ -58,7 +58,7 @@ const BookLists = ({searchTarget, category}) => {
     else if (Array.isArray(books) && books.length === 0){
         return (<div>No search result</div>);
     }
-    console.log(books);
+    
     return (
         <div>
             {books.map(({authors, contents, thumbnail, title, url}) => (

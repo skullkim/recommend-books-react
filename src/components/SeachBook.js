@@ -35,7 +35,7 @@ const SearchBook = ({search}) => {
         if(e.key === 'Enter') {
             search(target);
         }
-    }
+    };
 
     return(
         <SearchBox>
