@@ -14,21 +14,23 @@ const Main = styled.div`
 
 function App() {
    const [searchTarget, setSearchTarget] = useState('');
-   const [selectedCategory, setSelectedCategory] = useState('전체');
+   const [selectedCategory, setSelectedCategory] = useState('책');
    const clickSearchBtn = useCallback((target) => {
        console.log(1111);
        setSearchTarget(target);
+       setSelectedCategory('');
    }, [searchTarget]);
 
    const selectCategory = useCallback((category) => {
        setSelectedCategory(category);
+       setSearchTarget('');
    }, [selectedCategory]);
-
+   console.log(selectedCategory);
   return (
     <Main className="App">
         <SearchBook searchTarget={searchTarget} search={clickSearchBtn}/>
         <CategoryList selected={selectedCategory} selectCategory={selectCategory}/>
-        <BookLists searchTarget={searchTarget}/>
+        <BookLists searchTarget={searchTarget} category={selectedCategory}/>
     </Main>
   );
 }
