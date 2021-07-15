@@ -25,7 +25,7 @@ const SearchButton = styled(NavLink)`
     justify-content: center;
 `;
 
-const SearchBook = ({searchTarget, search}) => {
+const SearchBook = ({search}) => {
     const [target, setTarget] = useState('');
     const inputTarget = useCallback((e) => {
         setTarget(e.target.value);
