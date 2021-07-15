@@ -1,6 +1,7 @@
 import React, {useState, useCallback} from 'react';
 import styled from 'styled-components';
 import {FaSearch} from 'react-icons/fa';
+import {NavLink} from 'react-router-dom';
 
 const SearchBox = styled.div`
   height: 50px;
@@ -14,8 +15,9 @@ const InputTarget = styled('input')`
   height: 30px;
 `;
 
-const SearchButton = styled('button')`
+const SearchButton = styled(NavLink)`
     font-size: 1.3rem;
+    color: black;
     height: 35px;
     width: 50px;
     display: flex;
@@ -32,7 +34,10 @@ const SearchBook = ({searchTarget, search}) => {
     return(
         <SearchBox>
             <InputTarget type="text" onChange={inputTarget}/>
-            <SearchButton onClick={() => search(target)}>
+            <SearchButton
+                onClick={() => search(target)}
+                to={`/${target}`}
+            >
                 <FaSearch/>
             </SearchButton>
         </SearchBox>
