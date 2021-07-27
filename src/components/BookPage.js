@@ -3,6 +3,7 @@ import styled from "styled-components";
 import BookLists from "./BookLists";
 import SearchBook from "./SeachBook";
 import CategoryList from "./CategoryList";
+import {SearchTarget, BookList} from "../containers/TargetContainers";
 
 const Main = styled.div`
   display: flex;
@@ -11,22 +12,23 @@ const Main = styled.div`
 `;
 
 const BookPage = () => {
-    const [searchTarget, setSearchTarget] = useState('');
-    const [selectedCategory, setSelectedCategory] = useState('책');
-    const clickSearchBtn = useCallback((target) => {
-        setSearchTarget(target);
-        setSelectedCategory('');
-    }, [searchTarget]);
-
-    const selectCategory = useCallback((category) => {
-        setSelectedCategory(category);
-        setSearchTarget('');
-    }, [selectedCategory]);
+    // const [searchTarget, setSearchTarget] = useState('');
+    // const [selectedCategory, setSelectedCategory] = useState('책');
+    // const clickSearchBtn = useCallback((target) => {
+    //     setSearchTarget(target);
+    //     setSelectedCategory('');
+    // }, [searchTarget]);
+    //
+    // const selectCategory = useCallback((category) => {
+    //     setSelectedCategory(category);
+    //     setSearchTarget('');
+    // }, [selectedCategory]);
     return (
         <Main className="App">
-            <SearchBook search={clickSearchBtn}/>
-            <CategoryList selected={selectedCategory} selectCategory={selectCategory}/>
-            <BookLists searchTarget={searchTarget} category={selectedCategory}/>
+            <SearchTarget/>
+            {/*<SearchBook/>*/}
+            <CategoryList/>
+            <BookList/>
         </Main>
     );
 }

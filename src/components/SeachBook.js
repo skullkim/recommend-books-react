@@ -25,23 +25,23 @@ const SearchButton = styled(NavLink)`
     justify-content: center;
 `;
 
-const SearchBook = ({search}) => {
+const SearchBook = ({onChangeInput}) => {
     const [target, setTarget] = useState('');
     const inputTarget = useCallback((e) => {
         setTarget(e.target.value);
     }, [target]);
-
+    //console.log(onChangeInput);
     const pressEnter = (e) => {
         if(e.key === 'Enter') {
-            search(target);
+            onChangeInput(target);
         }
     };
-
+    const onChange = e => onChangeInput(target);
     return(
         <SearchBox>
             <InputTarget type="text" onChange={inputTarget} onKeyPress={pressEnter}/>
             <SearchButton
-                onClick={() => search(target)}
+                onClick={onChange}
                 to={`/${target}`}
             >
                 <FaSearch/>
