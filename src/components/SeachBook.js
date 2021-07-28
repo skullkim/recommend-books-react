@@ -25,7 +25,7 @@ const SearchButton = styled(NavLink)`
     justify-content: center;
 `;
 
-const SearchBook = ({onChangeInput}) => {
+const SearchBook = ({onChangeInput, onChangeCategory}) => {
     const [target, setTarget] = useState('');
     const inputTarget = useCallback((e) => {
         setTarget(e.target.value);
@@ -34,9 +34,13 @@ const SearchBook = ({onChangeInput}) => {
     const pressEnter = (e) => {
         if(e.key === 'Enter') {
             onChangeInput(target);
+            onChangeCategory('');
         }
     };
-    const onChange = e => onChangeInput(target);
+    const onChange = e => {
+        onChangeInput(target);
+        onChangeCategory('');
+    }
     return(
         <SearchBox>
             <InputTarget type="text" onChange={inputTarget} onKeyPress={pressEnter}/>

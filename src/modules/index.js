@@ -3,6 +3,7 @@ import target from "./target";
 
 const rootReducer = combineReducers({
     target,
+    // category,
 });
 
 export default rootReducer;

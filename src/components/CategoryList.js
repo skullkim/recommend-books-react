@@ -24,20 +24,24 @@ const Category = styled(NavLink)`
   &:hover {
     cursor: grab;
   }
-  ${props => props.selected && css`
+  ${props => props.selectedCategory && css`
     font-weight: bold;
     text-decoration: underline;
   `}
 `;
 
-const CategoryList = ({selected, selectCategory}) => {
+const CategoryList = ({selectedCategory, onChangeCategory, onChangeInput}) => {
+    const click = (target) => {
+        onChangeCategory(target);
+        onChangeInput('');
+    }
     return (
         <CategoryBox>
             {categories.map(category =>
                 <Category
                     key={category.name}
-                    selected = {selected === category.target}
-                    onClick={() => selectCategory(category.target)}
+                    selected = {selectedCategory === category.target}
+                    onClick={() => click(category.target)}
                     exact={category.target === '책'}
                     to={category.target === '책' ? '/' : `${category.url}`}
                 >

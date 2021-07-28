@@ -3,7 +3,8 @@ import styled from "styled-components";
 import BookLists from "./BookLists";
 import SearchBook from "./SeachBook";
 import CategoryList from "./CategoryList";
-import {SearchTarget, BookList} from "../containers/TargetContainers";
+import {SearchTarget, BookList, Category} from "../containers/TargetContainers";
+// import {Category} from "../containers/CategoryContainer";
 
 const Main = styled.div`
   display: flex;
@@ -27,7 +28,7 @@ const BookPage = () => {
         <Main className="App">
             <SearchTarget/>
             {/*<SearchBook/>*/}
-            <CategoryList/>
+            <Category/>
             <BookList/>
         </Main>
     );
